@@ -7,6 +7,10 @@ dat$Z <- runif(length(x)*length(y), 0, 1)
 
 ## Rotate x-axis labels
 library(ggplot2)
-ggplot(dat, aes(X, Y, fill= Z)) + 
-  geom_tile() + scale_fill_gradient(low="white", high="steelblue") + 
+ggplot(dat, aes(X, Y, fill= Z)) + geom_tile() + 
+  scale_fill_gradient(low="white", high="steelblue") + 
   theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5))
+
+## Multiple color gradient (fill/color)
+ggplot(dat, aes(X, Y, fill= Z)) + geom_tile() + 
+  scale_fill_gradientn(colors=c("grey90","white","maroon"))
