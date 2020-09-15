@@ -15,6 +15,9 @@ ggplot(dat, aes(X, Y, fill= Z)) + geom_tile() +
 ggplot(dat, aes(X, Y, fill= Z)) + geom_tile() + 
   scale_fill_gradientn(colors=c("grey90","white","maroon"))
 
+## Increase all font sizes in the plot
+ggplot(dat, aes(X, Y, fill= Z)) + geom_tile() + theme(text = element_text(size = 20))
+
 
 ## Remove A-Z from all strings (A-Z or some pattern to replace)
 dat.names <- paste0(sample(1:20, 10), sample(LETTERS, 10)) # sample output:  [1] "7M"  "16P" "12J" "8V"  "14L" "19D" "15E" "6Z"  "18B" "13Q"
