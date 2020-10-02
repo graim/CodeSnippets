@@ -30,4 +30,7 @@ dd <- data.frame(b = factor(c("Hi", "Med", "Hi", "Low"),
       z = c(1, 1, 1, 2))
 dd <- dd[with(dd, order(-z, b)), ]
 
+## Change plot margins
+par(mar=c(5.1,4.1,4.1,2.1)) # Default margins shown. Order is: bottom, left, top, right margin
+
 
