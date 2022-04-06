@@ -33,4 +33,15 @@ dd <- dd[with(dd, order(-z, b)), ]
 ## Change plot margins
 par(mar=c(5.1,4.1,4.1,2.1)) # Default margins shown. Order is: bottom, left, top, right margin
 
+## Converting gene names
+# Assumes dat.dog is a matrix of samples by genes, swaps out the gene ids for gene symbols
+#BiocManager::install("org.Cf.eg.db", update = FALSE)
+library(org.Cf.eg.db)
+annot.df <- data.frame("Symbols" = mapIds(org.Cf.eg.db, keys = rownames(dat.dog), column = "SYMBOL", keytype = "ENSEMBL"), dat.dog)
+annot.df$Symbols <- toupper(annot.df$Symbols)
+annot.df <- annot.df[!duplicated(annot.df$Symbols),]
+annot.df <- annot.df[complete.cases(annot.df),]
+rownames(annot.df) <- annot.df$Symbols
+annot.df <- annot.df[,-1]
+dat.dog <- annot.df
 
